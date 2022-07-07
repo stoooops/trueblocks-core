@@ -24,6 +24,7 @@ func RunServe(cmd *cobra.Command, args []string) error {
 	}
 
 	apiUrl := opts.Port
+	log.Printf("%s%-18.18s%s%s\n", colors.Green, "opts.Port:", colors.Off, opts.Port)
 	if !strings.Contains(apiUrl, "http") {
 		apiUrl = "http://localhost" + apiUrl
 	}
