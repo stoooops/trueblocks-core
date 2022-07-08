@@ -9,10 +9,12 @@ package servePkg
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 	"strings"
 
 	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/internal/globals"
+	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/pkg/colors"
 	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/pkg/logger"
 	"github.com/TrueBlocks/trueblocks-core/src/apps/chifra/pkg/validate"
 )
@@ -43,6 +45,9 @@ func (opts *ServeOptions) ToCmdLine() string {
 func ServeFinishParseApi(w http.ResponseWriter, r *http.Request) *ServeOptions {
 	opts := &ServeOptions{}
 	for key, value := range r.URL.Query() {
+		log.Printf("%s%-18.18s%s%s\n", colors.Green, "key:", colors.Off, key)
+		log.Printf("%s%-18.18s%s%s\n", colors.Green, "value:", colors.Off, value)
+		log.Printf("%s%-18.18s%s%s\n", colors.Green, "value[0]:", colors.Off, value[0])
 		switch key {
 		case "port":
 			opts.Port = value[0]
